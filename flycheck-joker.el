@@ -48,9 +48,19 @@
   :error-patterns
   ((error line-start (file-name) ":" line ":" column ": " (0+ not-newline) (or "error: " "Exception: ") (message) line-end)
    (warning line-start (file-name) ":" line ":" column ": " (0+ not-newline) "warning: " (message) line-end))
-  :modes clojure-mode)
+  :modes (clojure-mode clojurec-mode))
+
+(flycheck-define-checker clojurescript-joker
+  "A ClojureScript syntax checker using Joker.
+
+  See URL `https://github.com/candid82/joker'."
+  :command ("joker" "--lintcljs" source)
+  :error-patterns
+  ((error line-start (file-name) ":" line ":" column ": " (0+ not-newline) (or "error: " "Exception: ") (message) line-end)
+   (warning line-start (file-name) ":" line ":" column ": " (0+ not-newline) "warning: " (message) line-end))
+  :modes (clojurescript-mode))
 
 (add-to-list 'flycheck-checkers 'clojure-joker)
-
+(add-to-list 'flycheck-checkers 'clojurescript-joker)
 (provide 'flycheck-joker)
 ;;; flycheck-joker.el ends here
