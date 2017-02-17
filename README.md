@@ -1,7 +1,7 @@
 flycheck-joker
 =================
 
-This package adds Clojure syntax checker (via [Joker](https://github.com/candid82/joker)) to flycheck. To use it, add the following
+This package adds Clojure(Script) syntax checker (via [Joker](https://github.com/candid82/joker)) to flycheck. To use it, add the following
 to your init.el:
 
 ```
