@@ -60,7 +60,10 @@
    (warning line-start (file-name) ":" line ":" column ": " (0+ not-newline) "warning: " (message) line-end))
   :modes (clojurescript-mode))
 
-(add-to-list 'flycheck-checkers 'clojure-joker)
-(add-to-list 'flycheck-checkers 'clojurescript-joker)
+(defun flycheck-joker-setup ()
+  "Setup Flycheck for Joker."
+  (add-to-list 'flycheck-checkers 'clojure-joker)
+  (add-to-list 'flycheck-checkers 'clojurescript-joker))
+
 (provide 'flycheck-joker)
 ;;; flycheck-joker.el ends here
