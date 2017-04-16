@@ -1,6 +1,8 @@
 flycheck-joker
 =================
 
+[![MELPA](https://melpa.org/packages/flycheck-joker-badge.svg)](https://melpa.org/#/flycheck-joker)
+
 This package adds Clojure(Script) syntax checker (via [Joker](https://github.com/candid82/joker)) to flycheck.
 
 ## Installation
