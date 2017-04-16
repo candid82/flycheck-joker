@@ -17,8 +17,7 @@ Then add the following to your init.el:
 (require 'flycheck-joker)
 ```
 
-Make sure Joker executable is on your path. The latest version
-of Joker can be downloaded from https://github.com/candid82/joker/releases
+Make sure Joker binary is on your path. See [Joker installation instructions](https://github.com/candid82/joker#installation) for details.
 
 Please read about [Joker's linter mode](https://github.com/candid82/joker#linter-mode) to understand its capabilities and limitations. Specifically, it's important to [configure Joker](https://github.com/candid82/joker#reducing-false-positives) to reduce false positives.
 
