@@ -3,7 +3,7 @@ flycheck-joker
 
 This package adds Clojure(Script) syntax checker (via [Joker](https://github.com/candid82/joker)) to flycheck.
 
-#Installation
+## Installation
 
 The package is available on [Melpa](https://melpa.org/#/flycheck-joker):
 
