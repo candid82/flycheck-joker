@@ -52,20 +52,22 @@
   "A Clojure syntax checker using Joker.
 
   See URL `https://github.com/candid82/joker'."
-  :command ("joker" "--lint" source)
+  :command ("joker" "--lint" "--")
+  :standard-input t
   :error-patterns
-  ((error line-start (file-name) ":" line ":" column ": " (0+ not-newline) (or "error: " "Exception: ") (message) line-end)
-   (warning line-start (file-name) ":" line ":" column ": " (0+ not-newline) "warning: " (message) line-end))
+  ((error line-start "<stdin>:" line ":" column ": " (0+ not-newline) (or "error: " "Exception: ") (message) line-end)
+   (warning line-start "<stdin>:" line ":" column ": " (0+ not-newline) "warning: " (message) line-end))
   :modes (clojure-mode clojurec-mode))
 
 (flycheck-define-checker clojurescript-joker
   "A ClojureScript syntax checker using Joker.
 
   See URL `https://github.com/candid82/joker'."
-  :command ("joker" "--lintcljs" source)
+  :command ("joker" "--lintcljs" "--")
+  :standard-input t
   :error-patterns
-  ((error line-start (file-name) ":" line ":" column ": " (0+ not-newline) (or "error: " "Exception: ") (message) line-end)
-   (warning line-start (file-name) ":" line ":" column ": " (0+ not-newline) "warning: " (message) line-end))
+  ((error line-start "<stdin>:" line ":" column ": " (0+ not-newline) (or "error: " "Exception: ") (message) line-end)
+   (warning line-start "<stdin>:" line ":" column ": " (0+ not-newline) "warning: " (message) line-end))
   :modes (clojurescript-mode))
 
 (add-to-list 'flycheck-checkers 'clojure-joker)
