@@ -70,8 +70,20 @@
    (warning line-start "<stdin>:" line ":" column ": " (0+ not-newline) "warning: " (message) line-end))
   :modes (clojurescript-mode))
 
+(flycheck-define-checker clojure-joker-edn
+  "EDN syntax checker using Joker.
+  See URL `https://github.com/candid82/joker'."
+  :command ("joker" "--lintedn" "--")
+  :standard-input t
+  :error-patterns
+  ((error line-start "<stdin>:" line ":" column ": " (0+ not-newline) (or "error: " "Exception: ") (message) line-end)
+   (warning line-start "<stdin>:" line ":" column ": " (0+ not-newline) "warning: " (message) line-end))
+  :modes (clojure-mode clojurec-mode)
+  :predicate (lambda () (string= "edn" (file-name-extension (buffer-file-name)))))
+
 (add-to-list 'flycheck-checkers 'clojure-joker)
 (add-to-list 'flycheck-checkers 'clojurescript-joker)
+(add-to-list 'flycheck-checkers 'clojure-joker-edn)
 
 (provide 'flycheck-joker)
 ;;; flycheck-joker.el ends here
