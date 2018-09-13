@@ -4,7 +4,7 @@
 ;;
 ;; Author: Roman Bataev <roman.bataev@gmail.com>
 ;; Created: 12 February 2017
-;; Version: 0.1
+;; Version: 1.3.0
 ;; Package-Requires: ((flycheck "0.18"))
 
 ;;; Commentary:
@@ -14,7 +14,7 @@
 
 ;; (require 'flycheck-joker)
 
-;; Make sure Joker binary is on your path.
+;; Make sure Joker binary is on your path. Joker version v0.9.7 or greater is required.
 ;; Joker installation instructions are here: https://github.com/candid82/joker#installation
 ;;
 ;; Please read about Joker's linter mode to understand its capabilities and limitations:
@@ -52,7 +52,7 @@
   "A Clojure syntax checker using Joker.
 
   See URL `https://github.com/candid82/joker'."
-  :command ("joker" "--lint" "--")
+  :command ("joker" "--lint" "-")
   :standard-input t
   :error-patterns
   ((error line-start "<stdin>:" line ":" column ": " (0+ not-newline) (or "error: " "Exception: ") (message) line-end)
@@ -64,7 +64,7 @@
   "A ClojureScript syntax checker using Joker.
 
   See URL `https://github.com/candid82/joker'."
-  :command ("joker" "--lintcljs" "--")
+  :command ("joker" "--lintcljs" "-")
   :standard-input t
   :error-patterns
   ((error line-start "<stdin>:" line ":" column ": " (0+ not-newline) (or "error: " "Exception: ") (message) line-end)
@@ -74,7 +74,7 @@
 (flycheck-define-checker edn-joker
   "EDN syntax checker using Joker.
   See URL `https://github.com/candid82/joker'."
-  :command ("joker" "--lintedn" "--")
+  :command ("joker" "--lintedn" "-")
   :standard-input t
   :error-patterns
   ((error line-start "<stdin>:" line ":" column ": " (0+ not-newline) (or "error: " "Exception: ") (message) line-end)
