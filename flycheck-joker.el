@@ -4,7 +4,7 @@
 ;;
 ;; Author: Roman Bataev <roman.bataev@gmail.com>
 ;; Created: 12 February 2017
-;; Version: 1.3.0
+;; Version: 1.4.0
 ;; Package-Requires: ((flycheck "0.18"))
 
 ;;; Commentary:
