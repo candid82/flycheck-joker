@@ -58,7 +58,13 @@
   ((error line-start "<stdin>:" line ":" column ": " (0+ not-newline) (or "error: " "Exception: ") (message) line-end)
    (warning line-start "<stdin>:" line ":" column ": " (0+ not-newline) "warning: " (message) line-end))
   :modes (clojure-mode clojurec-mode)
-  :predicate (lambda () (not (string= "edn" (file-name-extension (buffer-file-name))))))
+  :predicate (lambda ()
+               (let (buffer-file-name (buffer-file-name))
+                 (if buffer-file-name
+                     (not (string= "edn" (file-name-extension buffer-file-name)))
+                   (when (or (equal 'clojure-mode major-mode)
+                             (equal 'clojurec-mode major-mode))
+                     t)))))
 
 (flycheck-define-checker clojurescript-joker
   "A ClojureScript syntax checker using Joker.
@@ -80,7 +86,10 @@
   ((error line-start "<stdin>:" line ":" column ": " (0+ not-newline) (or "error: " "Exception: ") (message) line-end)
    (warning line-start "<stdin>:" line ":" column ": " (0+ not-newline) "warning: " (message) line-end))
   :modes (clojure-mode clojurec-mode)
-  :predicate (lambda () (string= "edn" (file-name-extension (buffer-file-name)))))
+  :predicate (lambda ()
+               (let (buffer-file-name (buffer-file-name))
+                 (when buffer-file-name
+                   (string= "edn" (file-name-extension buffer-file-name))))))
 
 (add-to-list 'flycheck-checkers 'clojure-joker)
 (add-to-list 'flycheck-checkers 'clojurescript-joker)
